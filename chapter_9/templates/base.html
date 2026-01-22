@@ -10,7 +10,8 @@
         crossorigin="anonymous">
     </head>
     <body>
-        <a href="{% url "home" %}">Newspaper</a>
+        <h1><a href="{% url "home" %}">Newspaper</a></h1>
+        <h2><a href="{% url "article_list_view" %}">Articles</a></h2>
         {% if user.is_authenticated %}
             <p>Hey! {{ user.username }}</p>
             <ul>

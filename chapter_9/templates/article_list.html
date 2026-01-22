@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2>Available Articles</h2>
+        <a href="{% url "article_create_view" %}">Create Article</a>
+        {% for article in article_list %}
+            <div>
+                <h3><a href="{% url "article_detail_view" article.pk %}">{{ article.title }}</a></h3>
+                <p>By: {{ article.author }}</p>
+                <p>Created on: {{ article.date }}</p>
+                <p>{{ article.body}}</p>
+            </div>
+        {% endfor %}
+    
+    {% else %}
+        <p>You are not logged in! Please log in or sign up to continue using the website.</p>
+        <a href="{% url "login" %}">Log in</a>
+        <a href="{% url "signup" %}">Sign up</a>
+    {% endif %}
+
+    
+{% endblock content %}
